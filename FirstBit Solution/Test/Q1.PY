@@ -1,10 +1,11 @@
 ### Find the area and parimeter
 
 l = int(input("Enter length: "))
-b = int(input("Enter breadth: "))
-r = int(input("Enter redius: "))
+r = int(input("Enter radius: "))
+b = 2 * r  # breadth = diameter
 
-area = (l * b) + (0.5 * 3.14 * r * r)
-peri = 2 * (l + r) + (3.14 * r)
+area = (l * b) + (0.5 * 3.14 * r * r)   # Area = rectangle area + semicircle area
+
+peri = l + (2 * r) + (3.14 * r)  # Perimeter = length + diameter + semicircle circumference
 
 print(f'Area is {area} and Perimeter is {peri}')
