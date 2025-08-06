@@ -8,10 +8,10 @@ length = 50
 breadth = 40
 cost_per_meter = 35
 fencing_times = 5
+ 
+half_circle = 3.14 * r  # π * r length of the semicircle
 
-half_circle =  3.14 * r
-
-rectangle_sides = length + breadth
+rectangle_sides = 2 * length + breadth
 
 total_length = half_circle + rectangle_sides
 
@@ -19,4 +19,4 @@ fencing_length = total_length * fencing_times
 
 total_cost = fencing_length * cost_per_meter
 
-print(f"Total cost of fencing the field is {total_cost:}")
+print(f"Total cost of fencing the field is {total_cost}")
