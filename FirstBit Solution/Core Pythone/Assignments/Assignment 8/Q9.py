@@ -1,21 +1,19 @@
 ### 9. Write a program to check if entered number is a palindrome or not
 
-def reverse_number(num):
+def PalindromeNumber(num):
+    temp = num
     rev = 0
-    while num > 0:
-        digit = num % 10
+    while temp > 0:
+        digit = temp % 10
         rev = rev * 10 + digit
-        num = num // 10
-    return rev
+        temp //= 10
+    
+    if num == rev:
+        print(f'{num} is a Palindrome number.')
+    else:
+        print(f'{num} is not a Palindrome number.')
 
-def is_palindrome(num):
-    reversed_num = reverse_number(num)  
-    return num == reversed_num          
 
 n = int(input("Enter a number: "))
-result = is_palindrome(n)   
+PalindromeNumber(n)
 
-if result:
-    print(f"{n} is a palindrome number.")
-else:
-    print(f"{n} is not a palindrome number.")
