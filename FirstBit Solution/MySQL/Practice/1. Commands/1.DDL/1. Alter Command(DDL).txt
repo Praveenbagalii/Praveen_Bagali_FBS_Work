@@ -1,0 +1,176 @@
+1. ALTER COMMAND
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| fake_job_detection |
+| fbs                |
+| firstbitsolution   |
+| information_schema |
+| mysql              |
+| performance_schema |
+| praveen            |
+| sys                |
++--------------------+
+8 rows in set (0.01 sec)
+
+mysql> use praveen;
+Database changed
+mysql> create table student(rollno int, name varchar(15),
+    -> address varchar(20), percentage float(5,2));
+Query OK, 0 rows affected, 1 warning (0.04 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_praveen |
++-------------------+
+| employee          |
+| room              |
+| student           |
++-------------------+
+3 rows in set (0.01 sec)
+
+mysql> desc student;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| rollno     | int         | YES  |     | NULL    |       |
+| name       | varchar(15) | YES  |     | NULL    |       |
+| address    | varchar(20) | YES  |     | NULL    |       |
+| percentage | float(5,2)  | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+
+
+1.ADD ONE OR MULTIPLE COLUMNS:(Adds two new columns — marks and mobno)
+
+mysql> alter table student add column marks int,
+    -> add column mobno int;
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| rollno     | int         | YES  |     | NULL    |       |
+| name       | varchar(15) | YES  |     | NULL    |       |
+| address    | varchar(20) | YES  |     | NULL    |       |
+| percentage | float(5,2)  | YES  |     | NULL    |       |
+| marks      | int         | YES  |     | NULL    |       |
+| mobno      | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+
+
+2.MODIFY DATA TYPE: Changes the data type of percentage from float (5,2) to int.
+
+mysql> alter table student modify column percentage int;
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| rollno     | int         | YES  |     | NULL    |       |
+| name       | varchar(15) | YES  |     | NULL    |       |
+| address    | varchar(20) | YES  |     | NULL    |       |
+| percentage | int         | YES  |     | NULL    |       |
+| marks      | int         | YES  |     | NULL    |       |
+| mobno      | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+
+
+3.ADD COLUMN AT FIRST POSITION: Adds the column email_id at the first position.
+
+mysql> alter table student add column email_id varchar(25) first;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| email_id   | varchar(25) | YES  |     | NULL    |       |
+| rollno     | int         | YES  |     | NULL    |       |
+| name       | varchar(15) | YES  |     | NULL    |       |
+| address    | varchar(20) | YES  |     | NULL    |       |
+| percentage | int         | YES  |     | NULL    |       |
+| marks      | int         | YES  |     | NULL    |       |
+| mobno      | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+
+
+4.ADD COLUMN AFTER SPECIFIC COLUMN: Adds a new column gender after the column name.
+
+mysql> alter table student add column gender char(6) after name;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| email_id   | varchar(25) | YES  |     | NULL    |       |
+| rollno     | int         | YES  |     | NULL    |       |
+| name       | varchar(15) | YES  |     | NULL    |       |
+| gender     | char(6)     | YES  |     | NULL    |       |
+| address    | varchar(20) | YES  |     | NULL    |       |
+| percentage | int         | YES  |     | NULL    |       |
+| marks      | int         | YES  |     | NULL    |       |
+| mobno      | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+
+
+5.RENAME COLUMN NAME : Renames the column address to city.
+
+mysql> alter table student change column address city varchar(20);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| email_id   | varchar(25) | YES  |     | NULL    |       |
+| rollno     | int         | YES  |     | NULL    |       |
+| name       | varchar(15) | YES  |     | NULL    |       |
+| gender     | char(6)     | YES  |     | NULL    |       |
+| city       | varchar(20) | YES  |     | NULL    |       |
+| percentage | int         | YES  |     | NULL    |       |
+| marks      | int         | YES  |     | NULL    |       |
+| mobno      | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+
+
+6.DROP COLUMN: Removes the column marks from the table.
+
+mysql> alter table student drop column marks;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| email_id   | varchar(25) | YES  |     | NULL    |       |
+| rollno     | int         | YES  |     | NULL    |       |
+| name       | varchar(15) | YES  |     | NULL    |       |
+| gender     | char(6)     | YES  |     | NULL    |       |
+| city       | varchar(20) | YES  |     | NULL    |       |
+| percentage | int         | YES  |     | NULL    |       |
+| mobno      | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)

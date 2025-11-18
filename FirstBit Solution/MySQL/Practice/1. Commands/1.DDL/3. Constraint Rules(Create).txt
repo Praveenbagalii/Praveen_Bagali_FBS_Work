@@ -1,0 +1,43 @@
+mysql> use praveen;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_praveen |
++-------------------+
+| branch            |
+| employee          |
+| room              |
+| student           |
++-------------------+
+4 rows in set (0.14 sec)
+
+mysql> create table dept(dno int primary key,
+    -> name varchar(20),
+    -> location varchar(20));
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> create table emp
+    -> (eid int primary key,
+    -> name varchar (20) not null,
+    -> salary int check (salary > 10000),
+    -> mobno int unique,
+    -> address varchar (20) default 'Pune',
+    -> dno int,
+    -> foreign key(dno)
+    -> references dept(dno));
+Query OK, 0 rows affected (0.29 sec)
+
+mysql> desc emp;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| eid     | int         | NO   | PRI | NULL    |       |
+| name    | varchar(20) | NO   |     | NULL    |       |
+| salary  | int         | YES  |     | NULL    |       |
+| mobno   | int         | YES  | UNI | NULL    |       |
+| address | varchar(20) | YES  |     | Pune    |       |
+| dno     | int         | YES  | MUL | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.05 sec)
+
+mysql>
