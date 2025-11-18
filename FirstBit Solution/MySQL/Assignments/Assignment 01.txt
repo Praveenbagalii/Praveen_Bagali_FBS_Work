@@ -222,7 +222,7 @@ mysql> create table employees(
     -> phone_number int,
     -> hire_date date,
     -> job_id int,
-    -> salary decimal(7,2),
+    -> salary float(7,2),
     -> commission int,
     -> manager_id int,
     -> department_id int)
@@ -237,5 +237,6 @@ mysql> alter table employees
     -> references department(department_id, manager_id);
 Query OK, 0 rows affected (0.11 sec)
 Records: 0  Duplicates: 0  Warnings: 0
+
 
 mysql>
